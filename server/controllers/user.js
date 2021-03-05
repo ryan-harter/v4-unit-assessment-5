@@ -20,13 +20,13 @@ module.exports = {
     console.log(registeredUser[0])
     console.log(username, password)
 
-    console.log(user)
-
     req.session.user = {
       id: user.id,
       username: user.username,
-      profile_pic: user.profile_pic
+      profile_pic: `https://robohash.org/${user.username}.png`
     }
+
+    console.log(req.session.user)
 
     return res.status(201).send(req.session.user)
   },

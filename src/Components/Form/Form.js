@@ -16,7 +16,7 @@ class Form extends Component {
 
   submit() {
     axios.post('/api/post', this.state)
-      .then(() => 'replace this string with something useful')
+      .then(() => this.props.history.push('/dash'))
       .catch((err) => console.log(err))
   }
   
@@ -24,7 +24,7 @@ class Form extends Component {
     let imgSrc = this.state.img ? this.state.img : noImage;
 
     return (
-      <div className='form content-box'>
+      <div className='form-content-box'>
         <h2 className='title'>New Post</h2>
         <div className='form-main'>
           <div className='form-input-box'>
@@ -41,7 +41,10 @@ class Form extends Component {
             <textarea value={this.state.content} onChange={e => this.setState({ content: e.target.value })} />
           </div>
         </div>
-        <button onClick={this.submit} className='dark-button'>Post</button>
+        <div className='button-box'>
+          <button onClick={this.submit} className='dark-button'>Post</button>
+        </div>
+        
       </div>
     );
   }
